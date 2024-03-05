@@ -1,31 +1,65 @@
-INCLUDES	=	-I/opt/X11/include -Imlx
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/03/05 15:16:43 by kmatjuhi          #+#    #+#              #
+#    Updated: 2024/03/05 15:29:24 by kmatjuhi         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
-NAME		=	so_long
+# /Users/kmatjuhi/.brew/opt/glfw/lib 
+# /usr/local/Cellar/glfw/3.4/lib
 
-SRCS		=	so_long.c
+NAME	=	so_long
+LIBMLX	=	./MLX42
+LIBFT	=	./libft
+LIBPF	=	./ft_printf
+LIBGN	=	./get_next_line
 
-OBJS		=	$(SRCS:.c=.o)
+HEADERS	=	-I ./includes -I ${LIBMLX}/include -I ${LIBFT} -I ${LIBGN} -I ${LIBPF}
+LIBGL	=	-lglfw -L"/usr/local/Cellar/glfw/3.4/lib"
+LIBS	=	${LIBGL} ${LIBMLX}/libmlx42.a ${LIBFT}/libft.a ${LIBPF}/libftprintf.a ${LIBGN}/get_next_line.a
+SRCS	=	main.c
 
-CC			=	cc
-RM			=	-rm -f
-# CFLAGS		=	-Wall -Werror -Wextra
+OBJS	=	${SRCS:.c=.o}
 
-MLX_FLAGS	=	-Lmlx -lmlx -L/usr/X11/lib -lXext -lX11 -framework OpenGL -framework AppKit
+all: libft libmlx libpf libgn ${NAME}
 
-all: $(NAME)
+libft:
+	@${MAKE} -C ${LIBFT}
 
-$(NAME): $(OBJS)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(MLX_FLAGS)
+libmlx:
+	@${MAKE} -C ${LIBMLX}
+
+libpf:
+	@${MAKE} -C ${LIBPF}
+
+libgn:
+	@${MAKE} -C ${LIBGN}
 
 %.o: %.c
-	$(CC) $(CFLAGS) -c -o $@ $< $(INCLUDES)
+	@${CC} ${CFLAGS} -o $@ -c $< ${HEADERS}
+
+${NAME}: ${OBJS}
+	@${CC} ${OBJS} ${LIBS} ${HEADERS} -o ${NAME}
 
 clean:
-	$(RM) $(OBJS)
+	@rm -f ${OBJS}
+	@${MAKE} -C ${LIBFT} clean
+	@${MAKE} -C ${LIBMLX} clean
+	@${MAKE} -C ${LIBPF} clean
+	@${MAKE} -C ${LIBGN} clean
 
-fclean:
-	$(RM) $(NAME) $(OBJS)
+fclean: clean
+	@rm -f ${NAME}
+	@${MAKE} -C ${LIBFT} fclean
+	@${MAKE} -C ${LIBMLX} fclean
+	@${MAKE} -C ${LIBPF} fclean
+	@${MAKE} -C ${LIBGN} fclean
 	
-re: fclean all
+re: clean all
 
-.PHONY: all clean fclean 
+.PHONY: all, clean, fclean, re, libmlx, libft

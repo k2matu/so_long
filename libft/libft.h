@@ -6,7 +6,7 @@
 /*   By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 09:35:59 by kale              #+#    #+#             */
-/*   Updated: 2024/03/05 15:26:11 by kmatjuhi         ###   ########.fr       */
+/*   Updated: 2024/03/13 13:58:05 by kmatjuhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len);
 int		ft_toupper(int c);
 int		ft_tolower(int c);
 void	ft_free_arr(char **value);
+int		ft_strrcmp(char *s1, char *s2);
+int		ft_match(char *str, char *set);
 
 #endif

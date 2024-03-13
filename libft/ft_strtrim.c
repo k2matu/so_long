@@ -6,13 +6,13 @@
 /*   By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 06:53:37 by kmatjuhi          #+#    #+#             */
-/*   Updated: 2024/03/05 15:26:02 by kmatjuhi         ###   ########.fr       */
+/*   Updated: 2024/03/13 13:54:15 by kmatjuhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	match(char const *set, char c)
+static int	match(char const *set, char c)
 {
 	int	i;
 
@@ -26,7 +26,7 @@ int	match(char const *set, char c)
 	return (0);
 }
 
-int	first_pos(char const *s1, char const *set)
+static int	first_pos(char const *s1, char const *set)
 {
 	int	i;
 
@@ -36,7 +36,7 @@ int	first_pos(char const *s1, char const *set)
 	return (i);
 }
 
-int	last_pos(char const *s1, char const *set)
+static int	last_pos(char const *s1, char const *set)
 {
 	int	i;
 

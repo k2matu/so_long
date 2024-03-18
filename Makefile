@@ -6,7 +6,7 @@
 #    By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/05 15:16:43 by kmatjuhi          #+#    #+#              #
-#    Updated: 2024/03/14 10:54:06 by kmatjuhi         ###   ########.fr        #
+#    Updated: 2024/03/18 10:26:54 by kmatjuhi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,11 +19,11 @@ LIBFT = ./libft/libft.a
 
 MLX42 = ./MLX42/build/libmlx42.a
 
-SRCS = ./src/main.c ./src/read_file.c ./src/ft_error.c
+SRCS = ./src/main.c ./src/read_file.c ./src/ft_error.c ./src/validate_map.c
 
 # CFLAGS = -g -Wall -Wextra -Werror
 
-MLX42FLAGS = -Iinclude -lglfw -L"/usr/local/Cellar/glfw/3.4/lib"
+MLX42FLAGS = -Iinclude -lglfw -L"/Users/$(USER)/.brew/opt/glfw/lib/"
 
 all: ${NAME}
 

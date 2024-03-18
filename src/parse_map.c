@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/05 15:31:32 by kmatjuhi          #+#    #+#             */
-/*   Updated: 2024/03/18 12:09:57 by kmatjuhi         ###   ########.fr       */
+/*   Created: 2024/03/18 11:53:20 by kmatjuhi          #+#    #+#             */
+/*   Updated: 2024/03/18 11:53:34 by kmatjuhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	main(int argc, char **argv)
+char	**parse_map(char *str)
 {
-	static t_struct	game;
+	char	**two_d_map;
+	char	*map;
 
-	game = (t_struct){{0}, 0};
-	if (validate_map(argc, argv, game) == -1)
-		return (1);
-	return (0);
+	map = read_file(str);
+	two_d_map = ft_split(map, '\n');
+	free(map);
+	return (two_d_map);
 }

@@ -6,21 +6,24 @@
 /*   By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 13:47:51 by kmatjuhi          #+#    #+#             */
-/*   Updated: 2024/03/13 13:59:28 by kmatjuhi         ###   ########.fr       */
+/*   Updated: 2024/03/14 12:20:40 by kmatjuhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
 static int	match(char const *set, char c)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	while (set[i])
 	{
 		if (set[i] == c)
+		{
 			return (1);
+		}
 		i++;
 	}
 	return (0);
@@ -28,7 +31,7 @@ static int	match(char const *set, char c)
 
 int	ft_match(char *str, char *set)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	while (str[i] && match(set, str[i]))

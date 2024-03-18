@@ -6,11 +6,11 @@
 #    By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/05 15:16:43 by kmatjuhi          #+#    #+#              #
-#    Updated: 2024/03/13 10:52:39 by kmatjuhi         ###   ########.fr        #
+#    Updated: 2024/03/14 10:54:06 by kmatjuhi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-# /Users/kmatjuhi/.brew/opt/glfw/lib 
+# /Users/$(USER)/.brew/opt/glfw/lib/
 # /usr/local/Cellar/glfw/3.4/lib
 
 NAME = so_long
@@ -19,11 +19,11 @@ LIBFT = ./libft/libft.a
 
 MLX42 = ./MLX42/build/libmlx42.a
 
-SRCS = ./src/main.c ./src/read_file.c
+SRCS = ./src/main.c ./src/read_file.c ./src/ft_error.c
 
-CFLAGS = -g -Wall -Wextra -Werror
+# CFLAGS = -g -Wall -Wextra -Werror
 
-MLX42FLAGS = -Iinclude -lglfw -L"/Users/$(USER)/.brew/opt/glfw/lib/"
+MLX42FLAGS = -Iinclude -lglfw -L"/usr/local/Cellar/glfw/3.4/lib"
 
 all: ${NAME}
 

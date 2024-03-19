@@ -6,7 +6,7 @@
 /*   By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 10:51:21 by kmatjuhi          #+#    #+#             */
-/*   Updated: 2024/03/14 13:01:55 by kmatjuhi         ###   ########.fr       */
+/*   Updated: 2024/03/19 11:53:10 by kmatjuhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ char	*read_file(char *str)
 	if (!map)
 		ft_error("Malloc error", NULL);
 	read(fd, map, sz);
+	close(fd);
 	map[sz] = '\0';
 	return (map);
 }

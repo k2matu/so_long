@@ -6,7 +6,7 @@
 #    By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/05 15:16:43 by kmatjuhi          #+#    #+#              #
-#    Updated: 2024/03/18 11:53:49 by kmatjuhi         ###   ########.fr        #
+#    Updated: 2024/03/19 11:15:17 by kmatjuhi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,13 @@ LIBFT = ./libft/libft.a
 
 MLX42 = ./MLX42/build/libmlx42.a
 
-SRCS = ./src/main.c ./src/read_file.c ./src/ft_error.c ./src/validate_map.c ./src/parse_map.c
+SRCS = ./src/main.c \
+		./src/read_file.c \
+		./src/ft_error.c \
+		./src/validate_map.c \
+		./src/parse_map.c \
+		./src/flood_fill.c \
+		./src/print_map.c
 
 # CFLAGS = -g -Wall -Wextra -Werror
 

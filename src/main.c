@@ -6,7 +6,7 @@
 /*   By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 15:31:32 by kmatjuhi          #+#    #+#             */
-/*   Updated: 2024/03/21 15:17:37 by kmatjuhi         ###   ########.fr       */
+/*   Updated: 2024/03/21 15:24:03 by kmatjuhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ void	image_to_window(t_struct *game, char **map)
 	int	i;
 	int	j;
 
+	// mlx_image_to_window(game->mlx, game->img->wall, 3 * SIZE, 5 * SIZE);
 	i = 0;
 	j = 0;
 	while (map[i])
@@ -52,7 +53,9 @@ void	image_to_window(t_struct *game, char **map)
 		while (map[i][j])
 		{
 			if (map[i][j] == WALL)
-				mlx_image_to_window(game->mlx, game->img->wall, i * SIZE, j * SIZE);
+				mlx_image_to_window(game->mlx, game->img->wall, j * SIZE, i * SIZE);
+			else if (map[i][j] == PLAYER)
+				mlx_image_to_window(game->mlx, game->img->player, j * SIZE, i * SIZE);
 			j++;
 		}
 		j = 0;
@@ -69,7 +72,7 @@ int	main(int argc, char **argv)
 	if (!validate_map(argc, argv, &game))
 		return (1);
 	map = parse_map(argv[1]);
-	game.mlx = mlx_init(game.columns * SIZE, game.rows * SIZE, "so_long", 1);
+	game.mlx = mlx_init(game.columns * SIZE, game.rows * 35, "so_long", 1);
 	if (!game.mlx)
 		return (-1);
 	get_texture(&game);

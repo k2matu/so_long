@@ -6,7 +6,7 @@
 /*   By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 10:25:12 by kmatjuhi          #+#    #+#             */
-/*   Updated: 2024/03/20 11:25:06 by kmatjuhi         ###   ########.fr       */
+/*   Updated: 2024/03/21 13:31:52 by kmatjuhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ static int	check_invalid_comp_and_shape(char **map, int column)
 	int	row;
 
 	row = 0;
-	if (column < 4)
-		ft_error("Map too small", map);
 	while (map[row] != NULL)
 	{
 		if (column != ft_strlen(map[row]))
@@ -27,8 +25,6 @@ static int	check_invalid_comp_and_shape(char **map, int column)
 			ft_error("Invalid map components", map);
 		row++;
 	}
-	if (row < 3)
-		ft_error("Map too small", map);
 	return (row);
 }
 
@@ -110,10 +106,10 @@ int	validate_map(int argc, char **argv, t_struct *game)
 	if (argc != 2 || ft_strrcmp(argv[1], ".ber") != 0 || ft_strlen(argv[1]) < 5)
 		ft_error("Mapfile must end with .ber extension.", NULL);
 	map = parse_map(argv[1]);
-	column = ft_strlen(map[0]);
-	rows = check_invalid_comp_and_shape(map, column);
+	game->columns = ft_strlen(map[0]);
+	game->rows = check_invalid_comp_and_shape(map, game->columns);
 	check_components(map, game);
-	check_surrounding_walls(map, rows, column);
+	check_surrounding_walls(map, game->rows, game->columns);
 	find_player_pos(map, game);
 	collectible = game->comp.collectible;
 	flood_fill(map, game, game->player_pos_x, game->player_pos_y);

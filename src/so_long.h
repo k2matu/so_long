@@ -6,7 +6,7 @@
 /*   By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 10:19:04 by kmatjuhi          #+#    #+#             */
-/*   Updated: 2024/03/20 11:27:26 by kmatjuhi         ###   ########.fr       */
+/*   Updated: 2024/03/21 14:58:31 by kmatjuhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,7 @@
 # define EXIT 'E'
 # define PLAYER 'P'
 
-# define WIDTH 256
-# define HEIGHT 256
+# define SIZE 35
 
 typedef struct s_map
 {
@@ -34,21 +33,37 @@ typedef struct s_map
 	int	exit ;
 }	t_map;
 
-typedef struct s_mlx
+typedef struct s_texture
 {
-	void		*window;
-	void		*context;
-	int32_t		width;
-	int32_t		height;
-	double		delta_time;
-}	t_mlx;
+	mlx_texture_t	*wall ;
+	mlx_texture_t	*collectible ;
+	mlx_texture_t	*player ;
+	mlx_texture_t	*exit_open ;
+	mlx_texture_t	*exit_closed ;
+	mlx_texture_t	*free ;
+}	t_texture;
+
+typedef struct s_image
+{
+	mlx_image_t *wall ;
+	mlx_image_t *collectible ;
+	mlx_image_t *player ;
+	mlx_image_t *exit_open ;
+	mlx_image_t *exit_closed ;
+	mlx_image_t *free ;
+}	t_image;
 
 typedef struct s_struct
 {
-	t_map	comp ;
-	int		player_pos_y ;
-	int		player_pos_x ;
-	int		moves ;
+	t_map		comp ;
+	int			player_pos_y ;
+	int			player_pos_x ;
+	int			moves ;
+	int			rows ;
+	int			columns ;
+	mlx_t		*mlx;
+	t_texture	*texture;
+	t_image		*img;
 }	t_struct;
 
 char	*read_file(char *str);

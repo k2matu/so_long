@@ -6,21 +6,31 @@
 /*   By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 12:28:10 by kmatjuhi          #+#    #+#             */
-/*   Updated: 2024/03/22 12:40:35 by kmatjuhi         ###   ########.fr       */
+/*   Updated: 2024/03/22 15:26:06 by kmatjuhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	key_up(t_struct *game)
+void	move(t_struct *game, int y, int x)
 {
-	if (game->map[game->player_pos_x - 1][game->player_pos_y] != WALL)
-	{
-		mlx_image_to_window(game->mlx, game->img->free, game->player_pos_x * SIZE, game->player_pos_y * SIZE);
-		game->player_pos_x = game->player_pos_x - 1;
-		mlx_image_to_window(game->mlx, game->img->player, game->player_pos_x * SIZE, game->player_pos_y * SIZE);
-	}
+	if (game->map[y][x] == WALL)
+		return ;
+	if (game->map[y][x] == COLLECTIBLE)
+		game->comp.collectible--;
+	
+	// if (game->map[game->player_pos_y][game->player_pos_x + 1] == EXIT)
+	// {
+	// 	if (game->comp.collectible == 0)
+	// 		mlx_close_window(game->mlx);
+	// }
+	mlx_image_to_window(game->mlx, game->img->free, game->player_pos_x * SIZE, game->player_pos_y * SIZE);
+	game->player_pos_y = y;
+	game->player_pos_x = x;
+	mlx_image_to_window(game->mlx, game->img->player, game->player_pos_x * SIZE, game->player_pos_y * SIZE);
+	printf("moves: %i", game->moves++);
 }
+
 
 void	my_keyhook(mlx_key_data_t keydata, void *param)
 {
@@ -28,5 +38,13 @@ void	my_keyhook(mlx_key_data_t keydata, void *param)
 
 	game = param;
 	if (keydata.key == MLX_KEY_W && keydata.action == MLX_PRESS)
-		key_up(game);
+		move(game, (game->player_pos_y - 1), game->player_pos_x);
+	if (keydata.key == MLX_KEY_S && keydata.action == MLX_PRESS)
+		move(game, (game->player_pos_y + 1), game->player_pos_x);
+	if (keydata.key == MLX_KEY_A && keydata.action == MLX_PRESS)
+		move(game, (game->player_pos_y), game->player_pos_x - 1);
+	if (keydata.key == MLX_KEY_D && keydata.action == MLX_PRESS)
+		move(game, (game->player_pos_y), game->player_pos_x + 1);
+	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
+		mlx_close_window(game->mlx);
 }

@@ -6,7 +6,7 @@
 /*   By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 10:19:04 by kmatjuhi          #+#    #+#             */
-/*   Updated: 2024/03/22 12:49:04 by kmatjuhi         ###   ########.fr       */
+/*   Updated: 2024/03/22 23:44:48 by kmatjuhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ typedef struct s_struct
 	t_map		comp ;
 	int			player_pos_y ;
 	int			player_pos_x ;
+	int			exit_pos_y ;
+	int			exit_pos_x ;
 	int			moves ;
 	int			rows ;
 	int			columns ;

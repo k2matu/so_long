@@ -6,7 +6,7 @@
 /*   By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 10:25:12 by kmatjuhi          #+#    #+#             */
-/*   Updated: 2024/03/21 13:31:52 by kmatjuhi         ###   ########.fr       */
+/*   Updated: 2024/03/22 23:44:58 by kmatjuhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,11 @@ static void	find_player_pos(char **map, t_struct *game)
 			{
 				game->player_pos_x = j;
 				game->player_pos_y = i;
-				return ;
+			}
+			if (map[i][j] == EXIT)
+			{
+				game->exit_pos_x = j;
+				game->exit_pos_y = i;
 			}
 			j++;
 		}

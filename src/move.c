@@ -6,7 +6,7 @@
 /*   By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 12:28:10 by kmatjuhi          #+#    #+#             */
-/*   Updated: 2024/03/22 15:26:06 by kmatjuhi         ###   ########.fr       */
+/*   Updated: 2024/03/22 23:37:08 by kmatjuhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,20 +17,21 @@ void	move(t_struct *game, int y, int x)
 	if (game->map[y][x] == WALL)
 		return ;
 	if (game->map[y][x] == COLLECTIBLE)
+	{
+		game->map[y][x] = EMPTY_SPACE;
 		game->comp.collectible--;
-	
-	// if (game->map[game->player_pos_y][game->player_pos_x + 1] == EXIT)
-	// {
-	// 	if (game->comp.collectible == 0)
-	// 		mlx_close_window(game->mlx);
-	// }
+	}
+	if (game->map[y][x] == EXIT && game->comp.collectible == 0)
+	{
+		mlx_terminate(game->mlx);
+		mlx_close_window(game->mlx);
+	}
 	mlx_image_to_window(game->mlx, game->img->free, game->player_pos_x * SIZE, game->player_pos_y * SIZE);
 	game->player_pos_y = y;
 	game->player_pos_x = x;
 	mlx_image_to_window(game->mlx, game->img->player, game->player_pos_x * SIZE, game->player_pos_y * SIZE);
-	printf("moves: %i", game->moves++);
+	printf("moves: %i\n", game->moves++);
 }
-
 
 void	my_keyhook(mlx_key_data_t keydata, void *param)
 {

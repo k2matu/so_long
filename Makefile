@@ -6,7 +6,7 @@
 #    By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/05 15:16:43 by kmatjuhi          #+#    #+#              #
-#    Updated: 2024/03/19 11:15:17 by kmatjuhi         ###   ########.fr        #
+#    Updated: 2024/03/22 12:57:11 by kmatjuhi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,11 +25,13 @@ SRCS = ./src/main.c \
 		./src/validate_map.c \
 		./src/parse_map.c \
 		./src/flood_fill.c \
-		./src/print_map.c
+		./src/print_map.c \
+		./src/graphic.c \
+		./src/move.c
 
 # CFLAGS = -g -Wall -Wextra -Werror
 
-MLX42FLAGS = -Iinclude -lglfw -L"/Users/$(USER)/.brew/opt/glfw/lib/"
+MLX42FLAGS = -Iinclude -lglfw -L"/usr/local/Cellar/glfw/3.4/lib"
 
 all: ${NAME}
 

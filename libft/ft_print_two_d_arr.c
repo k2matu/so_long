@@ -1,32 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_map.c                                        :+:      :+:    :+:   */
+/*   ft_print_two_d_arr.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 11:12:49 by kmatjuhi          #+#    #+#             */
-/*   Updated: 2024/03/19 11:14:03 by kmatjuhi         ###   ########.fr       */
+/*   Updated: 2024/03/26 13:31:06 by kmatjuhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
 
-void	print_map(char **map)
+void	ft_print_two_d_arr(char **arr)
 {
 	int	i;
 	int	j;
 
 	i = 0;
 	j = 0;
-	while (map[i] != NULL)
+	while (arr[i] != NULL)
 	{
-		while (map[i][j])
+		while (arr[i][j])
 		{
-			printf("%c", map[i][j]);
+			write(1, arr[i][j], 1);
 			j++;
 		}
-		printf("\n");
+		write(1, "\n", 1);
 		j = 0;
 		i++;
 	}

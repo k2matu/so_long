@@ -6,7 +6,7 @@
 /*   By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 15:31:32 by kmatjuhi          #+#    #+#             */
-/*   Updated: 2024/03/22 15:23:25 by kmatjuhi         ###   ########.fr       */
+/*   Updated: 2024/03/26 13:54:49 by kmatjuhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	main(int argc, char **argv)
 {
 	static t_struct	game;
 
-	game = (t_struct){{0}, 0};
+	game = (t_struct){{0}, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 	if (!validate_map(argc, argv, &game))
 		return (1);
 	game.map = parse_map(argv[1]);

@@ -6,7 +6,7 @@
 /*   By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 10:25:12 by kmatjuhi          #+#    #+#             */
-/*   Updated: 2024/03/22 23:44:58 by kmatjuhi         ###   ########.fr       */
+/*   Updated: 2024/03/26 13:51:14 by kmatjuhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,8 +103,6 @@ static void	find_player_pos(char **map, t_struct *game)
 int	validate_map(int argc, char **argv, t_struct *game)
 {
 	char	**map;
-	int		rows;
-	int		column;
 	int		collectible;
 
 	if (argc != 2 || ft_strrcmp(argv[1], ".ber") != 0 || ft_strlen(argv[1]) < 5)

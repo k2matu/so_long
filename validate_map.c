@@ -6,7 +6,7 @@
 /*   By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 10:25:12 by kmatjuhi          #+#    #+#             */
-/*   Updated: 2024/03/27 17:49:59 by kmatjuhi         ###   ########.fr       */
+/*   Updated: 2024/03/27 18:05:14 by kmatjuhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,6 @@ void	validate_map(int argc, char **argv, t_struct *game)
 	find_player_exit_pos(map, game);
 	collectible = game->comp.collectible;
 	flood_fill(map, game, game->player_x, game->player_y);
-	printf("collect%d player%d exit%d\n", game->comp.collectible, game->comp.player, game->comp.exit);
 	if (game->comp.exit != 0 || game->comp.player != 0 \
 	|| game->comp.collectible != 0)
 		ft_error(NULL, "No valid path", map);

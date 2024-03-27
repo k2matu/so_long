@@ -6,7 +6,7 @@
 /*   By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 10:19:04 by kmatjuhi          #+#    #+#             */
-/*   Updated: 2024/03/27 17:45:44 by kmatjuhi         ###   ########.fr       */
+/*   Updated: 2024/03/27 18:17:10 by kmatjuhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,5 @@ void	flood_fill(char **map, t_struct *game, int pos_x, int pos_y);
 void	image_to_window(t_struct *game, char **map, int i, int j);
 void	my_keyhook(mlx_key_data_t keydata, void *param);
 void	draw_img_to_win(t_struct *game, mlx_image_t *image, int j, int i);
-
 
 #endif

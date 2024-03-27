@@ -6,7 +6,7 @@
 /*   By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 15:31:32 by kmatjuhi          #+#    #+#             */
-/*   Updated: 2024/03/27 17:28:46 by kmatjuhi         ###   ########.fr       */
+/*   Updated: 2024/03/27 18:09:27 by kmatjuhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,6 @@ int	main(int argc, char **argv)
 	mlx_key_hook(game.mlx, &my_keyhook, &game);
 	mlx_loop(game.mlx);
 	mlx_terminate(game.mlx);
+	ft_free_arr(game.map);
 	return (0);
 }

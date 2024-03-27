@@ -6,7 +6,7 @@
 /*   By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 10:25:12 by kmatjuhi          #+#    #+#             */
-/*   Updated: 2024/03/26 13:51:14 by kmatjuhi         ###   ########.fr       */
+/*   Updated: 2024/03/27 14:01:13 by kmatjuhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	check_invalid_comp_and_shape(char **map, int column)
 	row = 0;
 	while (map[row] != NULL)
 	{
-		if (column != ft_strlen(map[row]))
+		if (column != (int)ft_strlen(map[row]))
 			ft_error("Map must be rectangular", map);
 		if (ft_match(map[row], "01CEP") != 1)
 			ft_error("Invalid map components", map);
@@ -39,11 +39,11 @@ static void	check_components(char **map, t_struct *game)
 	{
 		while (map[i][j])
 		{
-			if (map[i][j] == COLLECTIBLE)
+			if (map[i][j] == 'C')
 				game->comp.collectible++;
-			else if (map[i][j] == EXIT)
+			else if (map[i][j] == 'E')
 				game->comp.exit++;
-			else if (map[i][j] == PLAYER)
+			else if (map[i][j] == 'P')
 				game->comp.player++;
 			j++;
 		}
@@ -61,13 +61,13 @@ static void	check_surrounding_walls(char **map, int row, int column)
 	i = -1;
 	while (++i < column - 1)
 	{
-		if (map[0][i] != WALL || map[row - 1][i] != WALL)
+		if (map[0][i] != '1' || map[row - 1][i] != '1')
 			ft_error("Map must be surrounded by walls.", map);
 	}
 	i = -1;
 	while (++i < row - 1)
 	{
-		if (map[i][0] != WALL || map[i][column - 1] != WALL)
+		if (map[i][0] != '1' || map[i][column - 1] != '1')
 			ft_error("Map must be surrounded by walls.", map);
 	}
 }
@@ -83,12 +83,12 @@ static void	find_player_pos(char **map, t_struct *game)
 	{
 		while (map[i][j])
 		{
-			if (map[i][j] == PLAYER)
+			if (map[i][j] == 'P')
 			{
 				game->player_pos_x = j;
 				game->player_pos_y = i;
 			}
-			if (map[i][j] == EXIT)
+			if (map[i][j] == 'E')
 			{
 				game->exit_pos_x = j;
 				game->exit_pos_y = i;

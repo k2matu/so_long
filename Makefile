@@ -6,7 +6,7 @@
 #    By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/05 15:16:43 by kmatjuhi          #+#    #+#              #
-#    Updated: 2024/03/26 13:42:08 by kmatjuhi         ###   ########.fr        #
+#    Updated: 2024/03/27 14:36:39 by kmatjuhi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,8 @@
 NAME = so_long
 
 LIBFT = ./libft/libft.a
+
+PRINTF = ./ft_printf/libftprintf.a
 
 MLX42 = ./MLX42/build/libmlx42.a
 
@@ -34,11 +36,14 @@ MLX42FLAGS = -Iinclude -lglfw -L"/usr/local/Cellar/glfw/3.4/lib"
 
 all: ${NAME}
 
-${NAME}: ${SRCS} $(LIBFT) $(MLX42)
-	cc $(CFLAGS) $^ -framework Cocoa -framework OpenGL -framework IOKit -o $@ $(LIBFT) $(MLX42) $(MLX42FLAGS)
+${NAME}: ${SRCS} $(LIBFT) $(PRINTF) $(MLX42)
+	cc $(CFLAGS) $^ -framework Cocoa -framework OpenGL -framework IOKit -o $@ $(LIBFT) $(PRINTF) $(MLX42) $(MLX42FLAGS)
 
 $(LIBFT):
 	make -C libft/
+	
+$(PRINTF):
+	make -C ft_printf/
 
 $(MLX42):
 	cd MLX42 && cmake -B build
@@ -47,10 +52,12 @@ $(MLX42):
 
 clean:
 	make clean -C libft
+	make clean -C ft_printf
 	make clean -C MLX42/build
 
 fclean: clean
 	rm -f ${NAME} ${NAME_BONUS}
+	make fclean -C ft_printf
 	make fclean -C libft
 	make clean -C MLX42/build
 

@@ -6,7 +6,7 @@
 /*   By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 15:31:32 by kmatjuhi          #+#    #+#             */
-/*   Updated: 2024/03/26 13:54:49 by kmatjuhi         ###   ########.fr       */
+/*   Updated: 2024/03/27 14:28:04 by kmatjuhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	main(int argc, char **argv)
 		return (-1);
 	get_texture(&game);
 	texture_to_image(&game);
-	image_to_window(&game, game.map);
+	image_to_window(&game, game.map, 0, 0);
 	mlx_key_hook(game.mlx, &my_keyhook, &game);
 	mlx_loop(game.mlx);
 	mlx_terminate(game.mlx);

@@ -6,7 +6,7 @@
 /*   By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 10:19:04 by kmatjuhi          #+#    #+#             */
-/*   Updated: 2024/03/26 13:42:57 by kmatjuhi         ###   ########.fr       */
+/*   Updated: 2024/03/27 14:28:29 by kmatjuhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,10 @@
 # define SO_LONG_H
 
 # include "./libft/libft.h"
+# include "./ft_printf/ft_printf.h"
 # include <fcntl.h>
 # include <stdio.h>
 # include "./MLX42/include/MLX42/MLX42.h"
-
-# define EMPTY_SPACE '0'
-# define WALL '1'
-# define COLLECTIBLE 'C'
-# define EXIT 'E'
-# define PLAYER 'P'
 
 # define SIZE 35
 
@@ -76,7 +71,7 @@ char	**parse_map(char *str);
 void	flood_fill(char **map, t_struct *game, int pos_x, int pos_y);
 void	get_texture(t_struct *game);
 void	texture_to_image(t_struct *game);
-void	image_to_window(t_struct *game, char **map);
+void	image_to_window(t_struct *game, char **map, int i, int j);
 void	my_keyhook(mlx_key_data_t keydata, void *param);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 11:12:49 by kmatjuhi          #+#    #+#             */
-/*   Updated: 2024/03/26 13:31:06 by kmatjuhi         ###   ########.fr       */
+/*   Updated: 2024/03/26 14:14:56 by kmatjuhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	ft_print_two_d_arr(char **arr)
 	{
 		while (arr[i][j])
 		{
-			write(1, arr[i][j], 1);
+			write(1, &arr[i][j], 1);
 			j++;
 		}
 		write(1, "\n", 1);

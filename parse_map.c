@@ -6,7 +6,7 @@
 /*   By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 11:53:20 by kmatjuhi          #+#    #+#             */
-/*   Updated: 2024/03/20 10:18:55 by kmatjuhi         ###   ########.fr       */
+/*   Updated: 2024/03/27 16:43:13 by kmatjuhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	check_new_lines(char **two_d_map, char *map)
 	while (two_d_map[i] != NULL)
 		i++;
 	if (i != (count_new_lines + 1))
-		ft_error("No empty lines allowed", two_d_map);
+		ft_error(NULL, "No empty lines allowed", two_d_map);
 }
 
 char	**parse_map(char *str)
@@ -39,6 +39,8 @@ char	**parse_map(char *str)
 
 	map = read_file(str);
 	two_d_map = ft_split(map, '\n');
+	if (!two_d_map)
+		ft_error(NULL, "Malloc error in ft_split", NULL);
 	check_new_lines(two_d_map, map);
 	free(map);
 	return (two_d_map);

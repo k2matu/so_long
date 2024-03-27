@@ -6,7 +6,7 @@
 /*   By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 10:33:29 by kmatjuhi          #+#    #+#             */
-/*   Updated: 2024/03/27 14:04:22 by kmatjuhi         ###   ########.fr       */
+/*   Updated: 2024/03/27 17:57:46 by kmatjuhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 
 void	flood_fill(char **map, t_struct *game, int pos_x, int pos_y)
 {
-	if (map[pos_x][pos_y] == '1' || map[pos_x][pos_y] == 'X')
+	if (map[pos_y][pos_x] == '1' || map[pos_y][pos_x] == 'X')
 		return ;
-	if (map[pos_x][pos_y] == 'P')
+	if (map[pos_y][pos_x] == 'P')
 		game->comp.player--;
-	if (map[pos_x][pos_y] == 'E')
+	if (map[pos_y][pos_x] == 'E')
 		game->comp.exit--;
-	if (map[pos_x][pos_y] == 'C')
+	if (map[pos_y][pos_x] == 'C')
 		game->comp.collectible--;
-	map[pos_x][pos_y] = 'X';
+	map[pos_y][pos_x] = 'X';
 	flood_fill(map, game, pos_x + 1, pos_y);
 	flood_fill(map, game, pos_x - 1, pos_y);
 	flood_fill(map, game, pos_x, pos_y + 1);

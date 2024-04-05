@@ -6,7 +6,7 @@
 /*   By: kmatjuhi <kmatjuhi@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 12:25:44 by kmatjuhi          #+#    #+#             */
-/*   Updated: 2024/03/27 17:17:45 by kmatjuhi         ###   ########.fr       */
+/*   Updated: 2024/03/27 20:14:35 by kmatjuhi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void	get_texture(t_struct *game)
 	game->texture->free = mlx_load_png("./images/free.png");
 	if (!game->texture->wall || !game->texture->collectible || \
 	!game->texture->player || !game->texture->exit || !game->texture->free)
-		ft_error(game, "Mlx texture failed", game->map);
+		ft_error(NULL, "Mlx texture failed", game->map);
 }
 
 static void	texture_to_image(t_struct *game)
@@ -33,12 +33,16 @@ static void	texture_to_image(t_struct *game)
 	if (!game->img)
 		ft_error(game, "Calloc failed", game->map);
 	game->img->wall = mlx_texture_to_image(game->mlx, game->texture->wall);
+	mlx_delete_texture(game->texture->wall);
 	game->img->collectible = mlx_texture_to_image(game->mlx, \
 	game->texture->collectible);
+	mlx_delete_texture(game->texture->collectible);
 	game->img->player = mlx_texture_to_image(game->mlx, game->texture->player);
-	game->img->exit = mlx_texture_to_image(game->mlx, \
-	game->texture->exit);
+	mlx_delete_texture(game->texture->player);
+	game->img->exit = mlx_texture_to_image(game->mlx, game->texture->exit);
+	mlx_delete_texture(game->texture->exit);
 	game->img->free = mlx_texture_to_image(game->mlx, game->texture->free);
+	mlx_delete_texture(game->texture->free);
 	if (!game->img->wall || !game->img->collectible || \
 	!game->img->player || !game->img->exit || !game->img->free)
 		ft_error(game, "Mlx texture to image failed", game->map);
